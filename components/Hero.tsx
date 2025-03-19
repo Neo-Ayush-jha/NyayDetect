@@ -1,57 +1,107 @@
-import Image from 'next/image'
-import React from 'react'
-import Button from './Button'
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
+import Button from "./Button";
+import H1 from "@/public/h1.png";
+import H2 from "@/public/h2.png";
+import H3 from "@/public/h3.png";
 
 function Hero() {
-    return (
-        <section className='max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-20 xl:flex-row '>
-            <div className="hero-map" />
+  const [showCasePanel, setShowCasePanel] = useState(true);
 
-            {/*LEFT */}
-            <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
-                <Image src="/camp.svg" alt="camp" width={50} height={50} className='absolute left-[-5px] top-[-40px] w-10 lg:w-[50px]' />
-                <h1 className='bold-52 lg:bold:88'>Sevayatan Health Care</h1>
-                <p className="regular-16 mt-16 text-gray-30 xl:max-w-[520px]">
-                    Sevayatan conveys the idea of a hospital as a place of service and care in the context of Hindu culture. However, please ensure that this name is appropriate and culturally sensitive in your specific context.
-                </p>
-                <div className="my-11 flex flex-wrap gap-5">
-                    <div className="flex items-center gap-2">
-                        {Array(5).fill(1).map((_, index) => (
-                            <Image src="/star.svg" alt='star' key={index} width={24} height={24} />
-                        ))}
-                    </div>
-                    <p className="bold-16 lg:bold-20 text-blue-70">198k <span className="regular-16 lg:regular-20 ml-1">Excellent Reviews</span></p>
-                </div>
-                <div className="flex flex-col w-full gap-3 sm:flex-row">
-                    <Button type="button" title="Download App" variant="btn_green" />
-                    <Button type="button" title="How we work" icon="/play.svg" variant="btn_white_text" href='/case'/>
-                </div>
-            </div>
-            <div className="relative flex flex-1 items-start">
-            <div className="hero-image" />
+  return (
+    <section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-18 xl:flex-row ">
+      <div className="hero-map" />
 
-                <div className="relative z-20 w-[268px] flex flex-col gap-8 rounded-3xl bg-green-90 px-7 py-8">
-                    <div className="flex flex-col">
-                        <div className="flexBetween">
-                            <p className='regular-16 text-gray-20'>Location</p>
-                            <Image src="/close.svg" alt="close" width={24} height={24} />
-                        </div>
-                        <p className='bold-20 text-white'>Purnea Bihar</p>
-                    </div>
-                    <div className="flexBetween">
-                        <div className="flex flex-col">
-                            <p className='regular-16 block text-gray-20'>Distance</p>
-                            <p className='bold-20 text-white'>173.28 mi</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <p className='regular-16 block text-gray-20'>Elevaton</p>
-                            <p className='bold-20 text-white'>2.4 km</p>
-                        </div>
-                    </div>
-                </div>
+      {/* Left Section */}
+      <Image
+        src="/camp.svg"
+        alt="camp"
+        width={50}
+        height={50}
+        className="absolute w-10 lg:w-[50px]"
+      />
+
+      <div className="relative z-20 flex flex-1 flex-col xl:w-1/2  top-[50px] ">
+        <h1 className="text-xl font-extrabold text-neonBlue lg:text-6xl lg:bold:88">
+          AI Noir: <span className="text-cyberRed">Unravel the Unknown</span>
+        </h1>
+
+        <p className="mt-8 text-gray-30 text-lg xl:max-w-[520px]">
+          Step into the shoes of a detective working alongside an advanced AI to
+          solve high-tech crimes. But beware—**digital deception** lurks in
+          every corner.
+        </p>
+
+        {/* Call to Action */}
+        <div className="mt-10 flex flex-col w-full gap-3 sm:flex-row">
+          <Button
+            type="button"
+            title="Start Investigation"
+            variant="btn_neon"
+            href="/investigate"
+          />
+          <Button
+            type="button"
+            title="Watch Trailer"
+            icon="/play.svg"
+            variant="btn_outline"
+          />
+        </div>
+      </div>
+
+      {/* Right Section (AI Console Effect) */}
+      <div className="relative flex flex-1 items-start">
+        {/* AI Hologram & Detective Silhouette */}
+        <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[550px] flex justify-center">
+          <Image
+            src={H1}
+            alt="AI Hologram"
+            width={400}
+            height={400}
+            className="object-contain opacity-80 animate-glow rounded-md"
+          />
+          <Image
+            src={H2}
+            alt="Detective Silhouette"
+            width={350}
+            height={350}
+            className="absolute bottom-0 opacity-90 rounded-lg"
+          />
+        </div>
+
+        {/* Case Intel Panel (Clickable) */}
+        {showCasePanel && (
+          <div className="absolute bottom-10 left-10 z-20 w-[260px] flex flex-col gap-6 rounded-xl bg-darkGlass px-6 py-6 backdrop-blur-md shadow-lg border border-neonBlue">
+            <div className="flex justify-between">
+              <p className="text-gray-300 text-sm">Latest Case</p>
+              <Image
+                src={"/close.svg"}
+                alt="Close"
+                width={20}
+                height={20}
+                className="cursor-pointer"
+                onClick={() => setShowCasePanel(false)} // Close on click
+              />
             </div>
-        </section>
-    )
+            <p className="text-lg text-white font-bold">
+              Case #1024: Digital Mirage
+            </p>
+            <div className="flex justify-between">
+              <div className="flex flex-col">
+                <p className="text-gray-400 text-sm">Suspects</p>
+                <p className="text-white text-md">4</p>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-gray-400 text-sm">Complexity</p>
+                <p className="text-cyberRed text-md">High</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
 }
 
-export default Hero
+export default Hero;

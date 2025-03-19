@@ -158,3 +158,23 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px #00ffff);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite alternate;
+}
+
+.bg-darkGlass {
+  background: rgba(20, 20, 20, 0.8);
+}
