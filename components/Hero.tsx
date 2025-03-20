@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Button from "./Button";
 import H1 from "@/public/h1.png";
 import H2 from "@/public/h2.png";
-import H3 from "@/public/h3.png";
 
 function Hero() {
   const [showCasePanel, setShowCasePanel] = useState(true);
@@ -38,7 +37,7 @@ function Hero() {
           <Button
             type="button"
             title="Start Investigation Case"
-            variant="bg-green-50 py-4 px-6"
+            variant="btn_dark_green_outline"
             href="/case"
           />
           <Button

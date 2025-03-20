@@ -26,27 +26,19 @@ const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-gray-800 p-6 rounded-lg w-96 shadow-xl relative">
-        <button
-          className="absolute top-4 right-4 text-white text-xl"
-          onClick={() => {
-            setSelectedSuspect(null);
-            setQuestion("");
-          }}
-        >
-          ❌
-        </button>
         <h2 className="text-lg font-bold text-yellow-400">
           🗣️ Interrogating {selectedSuspect.name}
         </h2>
         <p className="text-gray-400 italic">Alibi: {selectedSuspect.alibi}</p>
 
-        <input
-          type="text"
+        <textarea
           placeholder="Ask a question..."
-          className="mt-4 p-2 w-full bg-gray-700 rounded-md text-white placeholder-gray-400"
+          className="mt-4 p-2 w-full bg-gray-700 rounded-md text-white placeholder-gray-400 resize-none"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
+          rows={4} // You can adjust the number of rows as needed
         />
+
         <button
           className="mt-3 w-full bg-blue-500 p-2 rounded-md hover:bg-blue-600 transition"
           onClick={() => interrogateSuspect(selectedSuspect.id)}
@@ -64,7 +56,9 @@ const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
         </button>
 
         {interrogationResponse && (
-          <p className="mt-4 text-yellow-300 text-sm">💬 {interrogationResponse}</p>
+          <p className="mt-4 text-yellow-300 text-sm">
+            💬 {interrogationResponse}
+          </p>
         )}
       </div>
     </div>

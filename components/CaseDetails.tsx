@@ -1,5 +1,6 @@
 import React from "react";
 import { Suspect, CaseData } from "@/app/types"; 
+import { User2 } from "lucide-react";
 
 
 interface Evidence {
@@ -27,13 +28,14 @@ const CaseDetails: React.FC<CaseDetailsProps> = ({ caseData, setSelectedSuspect 
       <p className="text-gray-400">{caseData.culprit_actions}</p>
 
       <h3 className="mt-6 text-xl font-semibold text-gray-200">🚔 Suspects</h3>
-      <div className="flex gap-3 mt-3">
+      <div className="flex gap-3 mt-3 flex-1 ">
         {caseData.suspects?.map((suspect: Suspect) => (
           <button
             key={suspect.id}
-            className="bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600 transition"
+            className="bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600 transition flex gap-3 flex-1 items-center justify-center"
             onClick={() => setSelectedSuspect(suspect)}
           >
+            <User2/>
             {suspect.name}
           </button>
         ))}
