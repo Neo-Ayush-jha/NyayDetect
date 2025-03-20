@@ -27,7 +27,7 @@ function Hero() {
           AI Noir: <span className="text-cyberRed">Unravel the Unknown</span>
         </h1>
 
-        <p className="mt-8 text-gray-30 text-lg xl:max-w-[520px]">
+        <p className="mt-8 text-gray-30 text-lg xl:max-w-[560px]">
           Step into the shoes of a detective working alongside an advanced AI to
           solve high-tech crimes. But beware—**digital deception** lurks in
           every corner.
@@ -37,9 +37,9 @@ function Hero() {
         <div className="mt-10 flex flex-col w-full gap-3 sm:flex-row">
           <Button
             type="button"
-            title="Start Investigation"
-            variant="btn_neon"
-            href="/investigate"
+            title="Start Investigation Case"
+            variant="bg-green-50 py-4 px-6"
+            href="/case"
           />
           <Button
             type="button"
