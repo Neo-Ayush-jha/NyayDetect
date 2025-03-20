@@ -1,9 +1,6 @@
 import React from "react";
+import { Suspect, CaseData } from "@/app/types"; 
 
-interface Suspect {
-  id: number;
-  name: string;
-}
 
 interface Evidence {
   id: number;
@@ -11,15 +8,6 @@ interface Evidence {
   is_key_evidence: boolean;
 }
 
-interface CaseData {
-  title: string;
-  description: string;
-  crime_execution: string;
-  culprit_actions: string;
-  suspects: Suspect[];
-  evidence: Evidence[];
-  is_guilty: boolean;
-}
 
 interface CaseDetailsProps {
   caseData: CaseData;

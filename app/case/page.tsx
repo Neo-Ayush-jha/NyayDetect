@@ -5,10 +5,14 @@ import LanguageSelector from "@/components/LanguageSelector";
 import CaseDetails from "@/components/CaseDetails";
 import SuspectInterrogation from "@/components/SuspectInterrogation";
 
-interface Suspect {
+
+// types.ts
+export interface Suspect {
   id: number;
   name: string;
-  alibi: string;
+  age: number;
+  occupation: string;
+  alibi: string; 
 }
 
 interface Evidence {
