@@ -1,10 +1,11 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import LanguageSelector from "@/components/LanguageSelector";
 import CaseDetails from "@/components/CaseDetails";
 import SuspectInterrogation from "@/components/SuspectInterrogation";
-
+import Loader from "@/components/Loader";
 
 // types.ts
 export interface Suspect {
@@ -12,7 +13,7 @@ export interface Suspect {
   name: string;
   age: number;
   occupation: string;
-  alibi: string; 
+  alibi: string;
 }
 
 interface Evidence {
@@ -38,6 +39,7 @@ const CasePage = () => {
   const [question, setQuestion] = useState<string>("");
   const [interrogationResponse, setInterrogationResponse] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [interrogationLoading, setInterrogationLoading] = useState<boolean>(false);
   const [showLanguagePopup, setShowLanguagePopup] = useState<boolean>(true);
   const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
   const [languages, setLanguages] = useState<{ code: string; name: string }[]>([]);
@@ -59,6 +61,7 @@ const CasePage = () => {
 
   const generateCase = async () => {
     if (!selectedLanguage) return;
+    setLoading(true);
 
     try {
       const res = await fetch("http://127.0.0.1:8000/api/generate-case/", {
@@ -75,23 +78,26 @@ const CasePage = () => {
       }
     } catch (error) {
       console.error("Error generating case:", error);
+      setLoading(false);
     }
   };
 
   const fetchCaseDetails = async (caseId: number) => {
+    setLoading(true);
     try {
       const res = await fetch(`http://127.0.0.1:8000/api/case-details/${caseId}/`);
       const data: CaseData = await res.json();
       setCaseData(data);
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching case details:", error);
+    } finally {
       setLoading(false);
     }
   };
 
   const interrogateSuspect = async (suspectId: number) => {
     if (!question.trim()) return;
+    setInterrogationLoading(true);
 
     try {
       const res = await fetch(`http://127.0.0.1:8000/api/interrogate-suspect/${suspectId}/`, {
@@ -105,6 +111,8 @@ const CasePage = () => {
       setInterrogationResponse(data.response);
     } catch (error) {
       console.error("Error interrogating suspect:", error);
+    } finally {
+      setInterrogationLoading(false);
     }
   };
 
@@ -130,9 +138,7 @@ const CasePage = () => {
       </nav>
 
       {loading ? (
-        <div className="mt-10 text-center">
-          <p className="text-gray-400">Loading case details...</p>
-        </div>
+        <Loader />
       ) : (
         caseData && (
           <CaseDetails
@@ -150,6 +156,7 @@ const CasePage = () => {
           setQuestion={setQuestion}
           interrogationResponse={interrogationResponse}
           interrogateSuspect={interrogateSuspect}
+          loading={interrogationLoading}
         />
       )}
     </div>

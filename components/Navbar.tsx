@@ -11,7 +11,7 @@ import Logo from "../public/logo.png";
 export const NAV_LINKS = [
   { key: "home", label: "Home", icon: <Home size={20} />, href: "/" },
   { key: "episodes", label: "Episodes", icon: <Play size={20} />, href: "/episodes" },
-  { key: "investigate", label: "Investigate", icon: <Search size={20} />, href: "/investigate" },
+  { key: "investigate", label: "Investigate", icon: <Search size={20} />, href: "/case" },
   { key: "about", label: "About", icon: <Info size={20} />, href: "/about" },
 ];
 

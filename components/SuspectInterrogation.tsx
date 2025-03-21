@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Loader from "@/components/Loader"; // Make sure you have a Loader component
 
 interface Suspect {
   id: number;
@@ -23,9 +24,18 @@ const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
   interrogationResponse,
   interrogateSuspect,
 }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleInterrogate = async () => {
+    if (!question.trim()) return;
+    setLoading(true);
+    await interrogateSuspect(selectedSuspect.id);
+    setLoading(false);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-gray-800 p-6 rounded-lg w-96 shadow-xl relative">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4">
+      <div className="bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-xl relative">
         <h2 className="text-lg font-bold text-yellow-400">
           🗣️ Interrogating {selectedSuspect.name}
         </h2>
@@ -33,18 +43,25 @@ const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
 
         <textarea
           placeholder="Ask a question..."
-          className="mt-4 p-2 w-full bg-gray-700 rounded-md text-white placeholder-gray-400 resize-none"
+          className="mt-4 p-2 w-full bg-gray-700 rounded-md text-white placeholder-gray-400 resize-none focus:outline-none"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          rows={4} // You can adjust the number of rows as needed
+          rows={4}
+          disabled={loading}
         />
 
         <button
-          className="mt-3 w-full bg-blue-500 p-2 rounded-md hover:bg-blue-600 transition"
-          onClick={() => interrogateSuspect(selectedSuspect.id)}
+          className={`mt-3 w-full p-2 rounded-md transition ${
+            loading
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600"
+          }`}
+          onClick={handleInterrogate}
+          disabled={loading}
         >
-          Submit
+          {loading ? "Interrogating..." : "Submit"}
         </button>
+
         <button
           className="mt-3 w-full bg-red-500 p-2 rounded-md hover:bg-red-600 transition"
           onClick={() => {
@@ -55,8 +72,14 @@ const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
           ❌ Cancel
         </button>
 
-        {interrogationResponse && (
-          <p className="mt-4 text-yellow-300 text-sm">
+        {loading && (
+          <div className="flex justify-center mt-4">
+            <Loader /> {/* ✅ Show animated loader while loading */}
+          </div>
+        )}
+
+        {!loading && interrogationResponse && (
+          <p className="mt-4 text-yellow-300 text-sm bg-gray-700 p-3 rounded-md">
             💬 {interrogationResponse}
           </p>
         )}
