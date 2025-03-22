@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "http", hostname: "127.0.0.1", port: "8000" },
+      { protocol: "https", hostname: "mystery-game.onrender.com" },
       { protocol: "https", hostname: "libretranslate.com" },
       { protocol: "https", hostname: "api.dicebear.com" }, 
     ],

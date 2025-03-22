@@ -64,7 +64,7 @@ const CasePage = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/generate-case/", {
+      const res = await fetch("https://mystery-game.onrender.com/api/generate-case/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const CasePage = () => {
   const fetchCaseDetails = async (caseId: number) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/case-details/${caseId}/`);
+      const res = await fetch(`https://mystery-game.onrender.com/api/case-details/${caseId}/`);
       const data: CaseData = await res.json();
       setCaseData(data);
     } catch (error) {
@@ -100,7 +100,7 @@ const CasePage = () => {
     setInterrogationLoading(true);
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/interrogate-suspect/${suspectId}/`, {
+      const res = await fetch(`https://mystery-game.onrender.com/api/interrogate-suspect/${suspectId}/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
