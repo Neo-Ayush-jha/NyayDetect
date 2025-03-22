@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Loader from "@/components/Loader"; // Make sure you have a Loader component
 
 interface Suspect {
@@ -14,6 +14,7 @@ interface SuspectInterrogationProps {
   setQuestion: (question: string) => void;
   interrogationResponse: string;
   interrogateSuspect: (suspectId: number) => void;
+  loading:boolean;
 }
 
 const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
@@ -23,14 +24,12 @@ const SuspectInterrogation: React.FC<SuspectInterrogationProps> = ({
   setQuestion,
   interrogationResponse,
   interrogateSuspect,
+  loading,
 }) => {
-  const [loading, setLoading] = useState(false);
 
   const handleInterrogate = async () => {
     if (!question.trim()) return;
-    setLoading(true);
     await interrogateSuspect(selectedSuspect.id);
-    setLoading(false);
   };
 
   return (

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Loader() {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-900 text-white">
+    <div className="flex items-center justify-center  bg-gray-900 text-white">
       <motion.div
         className="relative w-24 h-24 flex items-center justify-center "
         initial={{ rotate: 0 }}
