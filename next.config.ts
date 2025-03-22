@@ -3,10 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      { hostname: "127.0.0.1:8000" },
-      { hostname: "libretranslate.com/languages" },
+      { protocol: "http", hostname: "127.0.0.1", port: "8000" },
+      { protocol: "https", hostname: "libretranslate.com" },
+      { protocol: "https", hostname: "api.dicebear.com" }, 
     ],
-    domains: ["i.ibb.co"],
+    domains: ["i.ibb.co"], 
   },
   reactStrictMode: true,
   env: {
@@ -16,4 +17,5 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_LANGUAGE_API_URL: process.env.NEXT_PUBLIC_LANGUAGE_API_URL,
   },
 };
+
 module.exports = nextConfig;
