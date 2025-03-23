@@ -8,17 +8,12 @@ interface CaseProps {
   detectivesJoined: string;
 }
 
-const CaseSite = ({
-  backgroundImage,
-  title,
-  subtitle,
-  detectivesJoined,
-}: CaseProps) => {
+const CaseSite = ({ backgroundImage, title, subtitle, detectivesJoined }: CaseProps) => {
   return (
     <div
-      className={`h-full w-full min-w-[1100px] ${backgroundImage} bg-cover bg-no-repeat lg:rounded-r-5xl 2xl:rounded-5xl`}
+      className={`h-full w-full min-w-[300px] sm:min-w-[500px] md:min-w-[800px] lg:min-w-[1100px] ${backgroundImage} bg-cover bg-no-repeat lg:rounded-r-5xl 2xl:rounded-5xl`}
     >
-      <div className="flex h-full flex-col items-start justify-between p-6 lg:px-20 lg:py-10">
+      <div className="flex h-full flex-col items-start justify-between p-4 sm:p-6 lg:px-20 lg:py-10">
         <div className="flexCenter gap-4">
           <div className="rounded-full bg-cyberRed p-4">
             <Image
@@ -26,6 +21,8 @@ const CaseSite = ({
               alt="Detective Badge"
               width={40}
               height={40}
+              layout="intrinsic"
+              className="object-contain"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -42,7 +39,8 @@ const CaseSite = ({
                 alt="detectives"
                 width={52}
                 height={52}
-                className="inline-block w-10 h-10 rounded-full"
+                layout="intrinsic"
+                className="inline-block w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full object-cover"
               />
             ))}
           </span>
@@ -56,7 +54,7 @@ const CaseSite = ({
 function CaseFiles() {
   return (
     <section className="2xl:max-container relative flex flex-col py-10 lg:mb-10 lg:py-20 xl:mb-20">
-      <div className="hide-scrollbar flex h-[340px] w-full items-start justify-start gap-8 overflow-x-auto lg:h-[400px] xl:h-[640px]">
+      <div className="hide-scrollbar flex h-[340px] w-full items-start justify-start gap-8 overflow-x-auto lg:h-[400px] xl:h-[640px] ">
         <CaseSite
           backgroundImage="bg-bg-img-1"
           title="Digital Mirage"
@@ -83,7 +81,7 @@ function CaseFiles() {
         />
       </div>
       <div className="flexEnd mt-10 px-6 lg:-mt-60 lg:mr-6">
-        <div className="bg-green-50 p-8 lg:max-w-[500px]  xl:max-w-[734px] xl:rounded-5xl xl:px-16 xl:py-20 relative w-full overflow-hidden rounded-3xl">
+        <div className="bg-green-50 p-8 lg:max-w-[500px] xl:max-w-[734px] xl:rounded-5xl xl:px-16 xl:py-20 relative w-full overflow-hidden rounded-3xl">
           <h2 className="regular-24 md:regular-32 2xl:regular-64 capitalize text-white">
             <strong>AI Noir:</strong> Unravel the Unknown
           </h2>
@@ -98,7 +96,8 @@ function CaseFiles() {
             alt="Camp-2"
             width={186}
             height={219}
-            className="camp-quote"
+            layout="intrinsic"
+            className="camp-quote object-contain"
           />
         </div>
       </div>

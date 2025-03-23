@@ -1,12 +1,28 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import H1 from "@/public/h1.png";
 import H2 from "@/public/h2.png";
 
 function Hero() {
   const [showCasePanel, setShowCasePanel] = useState(true);
+  const [totalCases, setTotalCases] = useState(null);
+
+  // Fetch Total Cases from API
+  useEffect(() => {
+    const fetchTotalCases = async () => {
+      try {
+        const response = await fetch("https://mystery-game.onrender.com/api/total_cases/");
+        const data = await response.json();
+        setTotalCases(data.total_cases); // Assuming API returns { "total_cases": 1024 }
+      } catch (error) {
+        console.error("Error fetching total cases:", error);
+      }
+    };
+
+    fetchTotalCases();
+  }, []);
 
   return (
     <section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-18 xl:flex-row ">
@@ -84,7 +100,7 @@ function Hero() {
               />
             </div>
             <p className="text-lg text-white font-bold">
-              Case #1024: Digital Mirage
+              Case #{totalCases || "Loading..."}: Digital Mirage
             </p>
             <div className="flex justify-between">
               <div className="flex flex-col">

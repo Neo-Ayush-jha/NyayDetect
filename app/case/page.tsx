@@ -31,18 +31,23 @@ interface CaseData {
   suspects: Suspect[];
   evidence: Evidence[];
   is_guilty: boolean;
+  is_solved: boolean;
 }
 
 const CasePage = () => {
   const [caseData, setCaseData] = useState<CaseData | null>(null);
   const [selectedSuspect, setSelectedSuspect] = useState<Suspect | null>(null);
   const [question, setQuestion] = useState<string>("");
-  const [interrogationResponse, setInterrogationResponse] = useState<string>("");
+  const [interrogationResponse, setInterrogationResponse] =
+    useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-  const [interrogationLoading, setInterrogationLoading] = useState<boolean>(false);
+  const [interrogationLoading, setInterrogationLoading] =
+    useState<boolean>(false);
   const [showLanguagePopup, setShowLanguagePopup] = useState<boolean>(true);
   const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
-  const [languages, setLanguages] = useState<{ code: string; name: string }[]>([]);
+  const [languages, setLanguages] = useState<{ code: string; name: string }[]>(
+    []
+  );
 
   useEffect(() => {
     fetchLanguages();
@@ -85,7 +90,9 @@ const CasePage = () => {
   const fetchCaseDetails = async (caseId: number) => {
     setLoading(true);
     try {
-      const res = await fetch(`https://mystery-game.onrender.com/api/case-details/${caseId}/`);
+      const res = await fetch(
+        `https://mystery-game.onrender.com/api/case-details/${caseId}/`
+      );
       const data: CaseData = await res.json();
       setCaseData(data);
     } catch (error) {
@@ -100,13 +107,16 @@ const CasePage = () => {
     setInterrogationLoading(true);
 
     try {
-      const res = await fetch(`https://mystery-game.onrender.com/api/interrogate-suspect/${suspectId}/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ question, language: selectedLanguage }),
-      });
+      const res = await fetch(
+        `https://mystery-game.onrender.com/api/interrogate-suspect/${suspectId}/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question, language: selectedLanguage }),
+        }
+      );
       const data = await res.json();
       setInterrogationResponse(data.response);
     } catch (error) {
@@ -135,6 +145,12 @@ const CasePage = () => {
           </button>
         </Link>
         <h2 className="text-xl font-semibold">🔎 Case Investigation</h2>
+        <button
+          onClick={generateCase}
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+          Next Case
+        </button>
       </nav>
 
       {loading ? (
@@ -143,7 +159,10 @@ const CasePage = () => {
         caseData && (
           <CaseDetails
             caseData={caseData}
-            setSelectedSuspect={(suspect: Suspect) => setSelectedSuspect(suspect)}
+            setSelectedSuspect={(suspect: Suspect) =>
+              setSelectedSuspect(suspect)
+            }
+            /*fetchCaseDetails={fetchCaseDetails}*/
           />
         )
       )}
