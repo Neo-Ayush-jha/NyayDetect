@@ -16,11 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://ai-noir.vercel.app/"></script>
+      </head>
       <body className="bg-[#C7E6F5C4]">
         <Navbar />
-        <main className="relative overflow-hidden">
-          {children}
-        </main>
+        <main className="relative overflow-hidden">{children}</main>
         <ToasterProvider /> {/* Now handled in a separate client component */}
         <Footer />
       </body>

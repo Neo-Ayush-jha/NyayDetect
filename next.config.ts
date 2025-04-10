@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "mystery-game.onrender.com" },
       { protocol: "https", hostname: "libretranslate.com" },
       { protocol: "https", hostname: "api.dicebear.com" }, 
+      { protocol: "https", hostname: "ai-noir.vercel.app" }, 
     ],
     domains: ["i.ibb.co"], 
   },
