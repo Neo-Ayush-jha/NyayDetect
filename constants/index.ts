@@ -44,7 +44,7 @@ export const FOOTER_LINKS = [
   {
     title: "Explore",
     links: [
-      "About AI Noir",
+      "About AI Nyayavaani",
       "How It Works",
       "Latest Cases",
       "Privacy Policy",

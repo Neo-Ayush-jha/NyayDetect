@@ -28,8 +28,8 @@ const Navbar: React.FC<NavbarProps> = ({ navLinks = NAV_LINKS }) => {
       <nav className="flexBetween max-container padding-container relative z-30 py-5">
         {/* Logo Section */}
         <Link href="/" className="flex items-center gap-2">
-          <Image src={Logo} alt="AI Noir Logo" width={44} height={44} />
-          <span className="text-4xl text-neonBlue font-bold">AI Noir</span>
+          <Image src={Logo} alt="AI Nyayavaani Logo" width={44} height={44} />
+          <span className="text-4xl text-neonBlue font-bold">AI Nyayavaani</span>
         </Link>
 
         {/* Navigation Links (Desktop) */}
