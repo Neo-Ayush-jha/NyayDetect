@@ -38,7 +38,7 @@ function Hero() {
       />
 
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2  top-[50px] ">
-        <h1 className="text-xl font-extrabold text-neonBlue lg:text-6xl lg:bold:88">
+        <h1 className="text-xl font-extrabold text-neonBlue lg:text-5xl lg:bold:88">
           AI Nyayavaani: <span className="text-cyberRed">Unravel the Unknown</span>
         </h1>
 
