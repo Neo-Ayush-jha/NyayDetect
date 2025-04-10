@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="flex flex-col items-start justify-center gap-[10%] md:flex-row">
           <Link href="/" className="mb-10 ">
             <Image src={Logo} alt="logo" width={44} height={28} />
-            <span className="text-4xl text-green-500 bold-52 lg:bold:88">AI Nyayavaani</span>
+            <span className="text-4xl text-green-500 bold-52 lg:bold:88">AI NyayDetect</span>
           </Link>
 
           <div className="flex flex-wrap gap-10 sm:justify-between md:flex-1">
@@ -44,7 +44,7 @@ const Footer = () => {
 
         <div className="border " />
         <p className="regular-14 w-full text-center text-gray-30">
-          2024 AI Nyayavaani | All rights reserved
+          2024 AI NyayDetect | All rights reserved
         </p>
       </div>
     </footer>

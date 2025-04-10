@@ -9,12 +9,12 @@ function Guides() {
   return (
     <section className='flexCenter flex-col'>
       <div className="padding-container max-container w-full pb-24">
-        <Image src={Logo} alt='AI Nyayavaani' width={50} height={50} />
+        <Image src={Logo} alt='AI NyayDetect' width={50} height={50} />
         <p className="uppercase regular-18 -mt-1 mb-3 text-cyberRed">Your AI Detective Hub</p>
         <div className="flex flex-wrap justify-between gap-5 lg:gap-10">
           <h2 className='bold-40 lg:bold-64 xl:max-w-[390px] text-neonBlue'>Case Investigation Center</h2>
           <p className="regular-16 text-gray-50 xl:max-w-[520px]">
-            Welcome to AI Nyayavaani – Where Advanced Intelligence Meets Investigation. 
+            Welcome to AI NyayDetect – Where Advanced Intelligence Meets Investigation. 
             Dive into high-tech crime-solving with AI-driven analytics, real-time case updates, 
             and deep forensic analysis. Step into the future of detective work with cutting-edge 
             tools and a network of digital sleuths.

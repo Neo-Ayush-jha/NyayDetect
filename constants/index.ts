@@ -44,7 +44,7 @@ export const FOOTER_LINKS = [
   {
     title: "Explore",
     links: [
-      "About AI Nyayavaani",
+      "About AI NyayDetect",
       "How It Works",
       "Latest Cases",
       "Privacy Policy",
